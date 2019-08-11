@@ -10,20 +10,17 @@ namespace surveyModel.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
-        public IActionResult Privacy()
+        [HttpPost("survey")]
+        public IActionResult Submission(Survey survey)
         {
-            return View();
+            return View("Result", survey);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
